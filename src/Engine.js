@@ -91,7 +91,9 @@ var Engine = function(){
         if(coup.charCodeAt(0)>= 'a'.charCodeAt(0)) {
             var moove = getCoup(coup);
             NbBille++;
-            plateau[moove.l][moove.c] = joueuractuel;
+            if(plateau[moove.l][moove.c] == 0) {
+                plateau[moove.l][moove.c] = joueuractuel;
+            }else throw new Myexception();
         }
         else{
             var x;
@@ -140,6 +142,11 @@ var Engine = function(){
     this.joueurSuivant = function(){
 
         joueuractuel = (joueuractuel == "Blanc" )? "Noir": "Blanc";
+    };
+
+    function Myexception(){
+
+        this.name = "Coup Invalide"
     };
 
     init();
