@@ -37,7 +37,7 @@ EngineTest.prototype.testRotationPlateau = function(){
     e.jouerCoup('a3');
     //Rotation sur le plateau HautGauche
     e.jouerCoup('1');
-    assertTrue(e.getCaseValue('c3')=="Blanc");
+    assertTrue(e.getCaseValue("c3")=="Blanc");
 };
 
 EngineTest.prototype.testJoueurSuivant= function(){
@@ -45,4 +45,17 @@ EngineTest.prototype.testJoueurSuivant= function(){
     var e = new Engine();
     e.joueurSuivant();
     assertTrue(e.getJoueuractuel()=="Noir");
+};
+
+
+EngineTest.prototype.testTourJoueurNoir = function(){
+
+    var e = new Engine();
+    e.jouerCoup("a1");
+    e.jouerCoup("1");
+    e.joueurSuivant();
+    e.jouerCoup("a1");
+    assertTrue(e.getNbBille() == 2);
+    assertTrue(e.getCaseValue("a1") == "Noir");
+    assertTrue(e.getCaseValue("a3") == "Blanc");
 };
