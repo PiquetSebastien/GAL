@@ -71,3 +71,16 @@ EngineTest.prototype.testRotationInverse = function(){
     assertTrue(e.getCaseValue("a1") == "Blanc");
     assertTrue(e.getCaseValue("a3") == "Noir");
 };
+
+EngineTest.prototype.testErreurCoup = function(){
+
+    var e = new Engine();
+    e.jouerCoup("a1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+    e.jouerCoup("a1");
+    e.jouerCoup("1i");
+
+    assertException(function(){e.jouerCoup("a3");}, "Coup Invalide");
+
+}
