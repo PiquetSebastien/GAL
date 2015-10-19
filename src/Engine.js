@@ -60,20 +60,29 @@ var Engine = function(){
     };
 
 
-    var rotatePlateau = function(array){
+    var rotatePlateau = function(sens, array){
 
         //Cr�ation tableau 2D
         var array2D = new Array(3);
         for(i=0; i < 6 ; i++){
             array2D[i] = new Array(3);
         }
-
-        for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < 3; j++) {
-                array2D[i][j] = array[j][2 - i];
+        if(sens == 1) {
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    array2D[i][j] = array[2 - j][i];
+                }
             }
         }
+        else {
+                for (var i = 0; i < 3; i++) {
+                    for (var j = 0; j < 3; j++) {
+                        array2D[i][j] = array[j][2 - i];
+                    }
+                }
+        }
         return array2D;
+
     };
 
 
@@ -107,7 +116,7 @@ var Engine = function(){
                 }
             }
 
-            var arrayRotate = rotatePlateau(array);
+            var arrayRotate = rotatePlateau((coup.charCodeAt(1) == 'h'.charCodeAt(0)),array);
 
             for(i=0; i < 3 ; i++) {
                 for (j = 0; j < 3; j++) {
