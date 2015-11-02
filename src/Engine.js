@@ -155,6 +155,7 @@ var Engine = function () {
                 if (plateau[i][j] === "Noir") {
                     cptn += 1;
                 }
+
                 if (cptb === 5) {
                     return "Blanc";
                 }

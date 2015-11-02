@@ -177,3 +177,48 @@ EngineTest.prototype.testOnziemeHistoire = function(){
 
     assertTrue(e.finGame() === "Blanc");
 };
+
+EngineTest.prototype.testDeuziemeHistoire = function(){
+
+    var e = new Engine();
+
+    e.jouerCoup("c4");
+    e.jouerCoup("3h");
+    e.joueurSuivant();
+
+    e.jouerCoup("d4");
+    e.jouerCoup("4i");
+    e.joueurSuivant();
+
+    e.jouerCoup("c3");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("c3");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("c4");
+    e.jouerCoup("3h");
+    e.joueurSuivant();
+
+    e.jouerCoup("e5");
+    e.jouerCoup("4h");
+    e.joueurSuivant();
+
+    e.jouerCoup("b1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("b2");
+    e.jouerCoup("2h");
+    e.joueurSuivant();
+
+    e.jouerCoup("c4");
+    e.jouerCoup("3h");
+    e.joueurSuivant();
+
+    e.jouerCoup("c3");
+
+    assertTrue(e.finGame() === "Noir");
+};
