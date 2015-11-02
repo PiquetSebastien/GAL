@@ -136,4 +136,44 @@ EngineTest.prototype.testDixiemeHistoire = function() {
     assertTrue(e.getCaseValue("c3") == "Noir");
     assertTrue(e.getCaseValue("d3") == "Noir");
 
-}
+};
+
+EngineTest.prototype.testOnziemeHistoire = function(){
+
+    var e = new Engine();
+    e.jouerCoup("a1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("a1");
+    e.jouerCoup("1i");
+    e.joueurSuivant();
+
+    e.jouerCoup("b1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("a2");
+    e.jouerCoup("1i");
+    e.joueurSuivant();
+
+    e.jouerCoup("c1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("a3");
+    e.jouerCoup("1i");
+    e.joueurSuivant();
+
+    e.jouerCoup("d1");
+    e.jouerCoup("2i");
+    e.joueurSuivant();
+
+    e.jouerCoup("f3");
+    e.jouerCoup("2h");
+    e.joueurSuivant();
+
+    e.jouerCoup("e1");
+
+    assertTrue(e.FinGame() == "Blanc");
+};
