@@ -2,7 +2,7 @@ var Engine = function () {
     "use strict";
     var NbBille = 0;
     var plateau;
-    var joueuractuel = 1;
+    var joueuractuel = "Blanc";
     var i, j, x, y;
 
 
@@ -41,7 +41,7 @@ var Engine = function () {
 
     var getJoueur = function (joueur) {
 
-        return (joueur === 1) ? "Blanc" : "Noir";
+        return (joueur === "Blanc") ? "Blanc" : "Noir";
     };
 
     this.getJoueuractuel = function () {
@@ -125,7 +125,7 @@ var Engine = function () {
             }
 
         }
-
+        console.log(plateau);
     };
 
 
@@ -133,7 +133,7 @@ var Engine = function () {
 
         var moove = getCoup(coup);
 
-        return (plateau[moove.l][moove.c] === 1) ? "Blanc" : "Noir";
+        return (plateau[moove.l][moove.c] === "Blanc") ? "Blanc" : "Noir";
     };
 
 

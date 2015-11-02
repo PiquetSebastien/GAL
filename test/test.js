@@ -1,5 +1,6 @@
 EngineTest = TestCase("Test");
 
+
 EngineTest.prototype.test1 = function () {
 
     var engine = new Engine();
@@ -84,5 +85,55 @@ EngineTest.prototype.testErreurCoup = function () {
     assertException(function () {
         e.jouerCoup("a3");
     }, "Coup Invalide");
+
+};
+
+EngineTest.prototype.testDixiemeHistoire = function() {
+
+    var e = new Engine();
+
+    e.jouerCoup("a1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("a1");
+    e.jouerCoup("1i");
+    e.joueurSuivant();
+
+    e.jouerCoup("b1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("a2");
+    e.jouerCoup("1i");
+    e.joueurSuivant();
+
+    e.jouerCoup("c1");
+    e.jouerCoup("1h");
+    e.joueurSuivant();
+
+    e.jouerCoup("a3");
+    e.jouerCoup("1i");
+    e.joueurSuivant();
+
+    e.jouerCoup("d1");
+    e.jouerCoup("2i");
+    e.joueurSuivant();
+
+    e.jouerCoup("f3");
+    e.jouerCoup("2h");
+    e.joueurSuivant();
+
+    assertTrue(e.getNbBille() === 8);
+
+    assertTrue(e.getCaseValue("a1") == "Blanc");
+    assertTrue(e.getCaseValue("b1") == "Blanc");
+    assertTrue(e.getCaseValue("c1") == "Blanc");
+    assertTrue(e.getCaseValue("d1") == "Blanc");
+
+    assertTrue(e.getCaseValue("a3") == "Noir");
+    assertTrue(e.getCaseValue("b3") == "Noir");
+    assertTrue(e.getCaseValue("c3") == "Noir");
+    assertTrue(e.getCaseValue("d3") == "Noir");
 
 }
