@@ -173,7 +173,7 @@ EngineTest.prototype.testOnziemeHistoire = function(){
     e.jouerCoup("2h");
     e.joueurSuivant();
 
-    e.jouerCoup("e1");
+    e.jouerCoup("e2");
 
-    assertTrue(e.FinGame() == "Blanc");
+    assertTrue(e.finGame() === "Blanc");
 };

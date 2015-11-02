@@ -125,7 +125,6 @@ var Engine = function () {
             }
 
         }
-        console.log(plateau);
     };
 
 
@@ -140,6 +139,31 @@ var Engine = function () {
     this.joueurSuivant = function () {
 
         joueuractuel = (joueuractuel === "Blanc") ? "Noir" : "Blanc";
+    };
+
+    this.finGame = function () {
+
+        var i, j, cptb, cptn;
+
+        for (i = 0; i < 6; i += 1) {
+            cptb = 0;
+            cptn = 0;
+            for (j = 0; j < 6; j += 1) {
+                if (plateau[i][j] === "Blanc") {
+                    cptb += 1;
+                }
+                if (plateau[i][j] === "Noir") {
+                    cptn += 1;
+                }
+                if (cptb === 5) {
+                    return "Blanc";
+                }
+                if (cptn === 5) {
+                    return "Noir";
+                }
+
+            }
+        }
     };
 
 
