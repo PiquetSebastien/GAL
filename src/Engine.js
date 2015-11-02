@@ -143,7 +143,7 @@ var Engine = function () {
 
     this.finGame = function () {
 
-        var i, j, cptb, cptn;
+        var cptb, cptn;
 
         for (i = 0; i < 6; i += 1) {
             cptb = 0;
