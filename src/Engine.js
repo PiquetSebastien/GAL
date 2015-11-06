@@ -224,6 +224,11 @@ var Engine = function () {
 
     };
 
+    this.setBeginPlayer = function(player){
+
+        joueuractuel = (player === "Noir") ? "Noir" : "Blanc";
+    };
+
 
 
     init();
