@@ -3,7 +3,7 @@ var Engine = function () {
     var NbBille = 0;
     var plateau;
     var joueuractuel = "Blanc";
-    var i, j, x, y;
+    var i , j, x, y;
 
 
     var initPlateau = function () {
@@ -92,6 +92,30 @@ var Engine = function () {
         this.name = "Coup Invalide";
     }
 
+    var transformeCodecoup = function(lcoup){
+
+        var qplauteau = { "tl" : 1, "bl" : 2, "tr": 3 , "br": 4};
+        var sensRotation = (lcoup[0]=="c") ? "h" : "i";
+        var position = qplauteau[lcoup.slice(1)];
+        return position + sensRotation;
+    };
+
+    this.jouerCoupCode = function(lcoup) {
+
+        var coup = lcoup.split(";");
+        var i;
+        var tmpCoup;
+        for (i =0; i < coup.length; i++){
+            tmpCoup = coup[i][0]+coup[i][1];
+            this.jouerCoup(tmpCoup);
+            if(coup[i].length == 5) {
+                tmpCoup = transformeCodecoup(coup[i].slice(-3));
+                this.jouerCoup(tmpCoup);
+            }
+        }
+    };
+
+
     this.jouerCoup = function (coup) {
         if (coup.charCodeAt(0) >= 'a'.charCodeAt(0)) {
             var moove = getCoup(coup);
@@ -123,7 +147,7 @@ var Engine = function () {
                     plateau[i + x][j + y] = arrayRotate[i][j];
                 }
             }
-
+            this.joueurSuivant();
         }
     };
 
@@ -141,7 +165,7 @@ var Engine = function () {
         joueuractuel = (joueuractuel === "Blanc") ? "Noir" : "Blanc";
     };
 
-    this.finGame = function () {
+    var CheckHorizontal = function(){
 
         var cptb, cptn;
 
@@ -165,6 +189,39 @@ var Engine = function () {
 
             }
         }
+    };
+
+    var CheckDiagonal = function(){
+
+        var cptb = 0, cptn = 0;
+
+        for (i = 0; i < 6; i += 1) {
+
+                if (plateau[i][i] === "Blanc") {
+                    cptb += 1;
+                }
+                if (plateau[i][i] === "Noir") {
+                    cptn += 1;
+                }
+
+                if (cptb === 5) {
+                    return "Blanc";
+                }
+                if (cptn === 5) {
+                    return "Noir";
+                }
+        }
+
+    };
+
+    this.winnerGame = function () {
+
+        var resh = CheckHorizontal();
+        var resd = CheckDiagonal();
+        if (resh === "Blanc" || resd === "Blanc") return "Blanc";
+        else if(resh === "Noir" || resd === "Noir") return "Noir";
+
+
     };
 
 
