@@ -54,7 +54,7 @@ EngineTest.prototype.testTourJoueurNoir = function () {
     var e = new Engine();
     e.jouerCoup("a1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
+
     e.jouerCoup("a1");
     assertTrue(e.getNbBille() == 2);
     assertTrue(e.getCaseValue("c1") == "Blanc");
@@ -66,7 +66,7 @@ EngineTest.prototype.testRotationInverse = function () {
     var e = new Engine();
     e.jouerCoup("a1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
+
     e.jouerCoup("a1");
     e.jouerCoup("1i");
     assertTrue(e.getCaseValue("a1") == "Blanc");
@@ -78,7 +78,7 @@ EngineTest.prototype.testErreurCoup = function () {
     var e = new Engine();
     e.jouerCoup("a1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
+
     e.jouerCoup("a1");
     e.jouerCoup("1i");
 
@@ -94,35 +94,27 @@ EngineTest.prototype.testDixiemeHistoire = function() {
 
     e.jouerCoup("a1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
 
     e.jouerCoup("a1");
     e.jouerCoup("1i");
-    //e.joueurSuivant();
 
     e.jouerCoup("b1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
 
     e.jouerCoup("a2");
     e.jouerCoup("1i");
-    //e.joueurSuivant();
 
     e.jouerCoup("c1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
 
     e.jouerCoup("a3");
     e.jouerCoup("1i");
-    //e.joueurSuivant();
 
     e.jouerCoup("d1");
     e.jouerCoup("3i");
-    //e.joueurSuivant();
 
     e.jouerCoup("f3");
     e.jouerCoup("3h");
-    //e.joueurSuivant();
 
     assertTrue(e.getNbBille() === 8);
 
@@ -143,35 +135,27 @@ EngineTest.prototype.testOnziemeHistoire = function(){
     var e = new Engine();
     e.jouerCoup("a1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
 
     e.jouerCoup("a1");
     e.jouerCoup("1i");
-    //e.joueurSuivant();
 
     e.jouerCoup("b1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
 
     e.jouerCoup("a2");
     e.jouerCoup("1i");
-    //e.joueurSuivant();
 
     e.jouerCoup("c1");
     e.jouerCoup("1h");
-    //e.joueurSuivant();
 
     e.jouerCoup("a3");
     e.jouerCoup("1i");
-    //e.joueurSuivant();
 
     e.jouerCoup("d1");
     e.jouerCoup("3i");
-    //e.joueurSuivant();
 
     e.jouerCoup("f3");
     e.jouerCoup("3h");
-    //e.joueurSuivant();
 
     e.jouerCoup("e1");
     assertTrue(e.winnerGame() === "Blanc");
@@ -184,3 +168,9 @@ EngineTest.prototype.testDeuziemeHistoire = function(){
     assertTrue(e.winnerGame() === "Noir");
 };
 
+EngineTest.prototype.testTreiziemeHistoire = function(){
+
+    var e = new Engine();
+    e.setBeginPlayer("Noir");
+    assertTrue(e.getJoueuractuel() === "Noir");
+};
