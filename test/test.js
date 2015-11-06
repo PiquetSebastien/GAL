@@ -174,3 +174,15 @@ EngineTest.prototype.testTreiziemeHistoire = function(){
     e.setBeginPlayer("Noir");
     assertTrue(e.getJoueuractuel() === "Noir");
 };
+
+EngineTest.prototype.test14Histoire = function(){
+
+    var e = new Engine();
+    e.jouerCoupCode("a1cbl ;d1cbr ;b1cbl ;e1cbr ;c1cbl ;f1cbr");
+    e.jouerCoupCode("a2cbl ;d2cbr ;b2cbl ;e2cbr ;c2cbl ;f2cbr");
+    e.jouerCoupCode("a3cbl ;d3cbr ;b3cbl ;e3cbr ;c3cbl ;f3cbr");
+    e.jouerCoupCode("b5ctl ;a4ctr ;e4ctl ;b4ctr ;f4ctl ;d4ctr");
+    e.jouerCoupCode("d5ctl ;a5ctr ;f5ctl ;c4ctr ;a6ctl ;c5ctr");
+    e.jouerCoupCode("b6ctl ;e5ctr ;d6ctl ;c6ctr ;f6ctl ;e6ctr");
+    assertTrue(e.getNbBille() === 36);
+};
